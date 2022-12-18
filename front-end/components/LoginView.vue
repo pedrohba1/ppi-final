@@ -60,8 +60,7 @@
 
 <script>
 import Vue from 'vue'
-import {login} from '../services/api/login'
-
+import { login } from '../services/api/login'
 
 export default Vue.extend({
   name: 'NuxtLogin',
@@ -78,8 +77,7 @@ export default Vue.extend({
         email: this.email,
       }
 
-      await login({...data})
-      
+      await login({ ...data })
     },
   },
 })
