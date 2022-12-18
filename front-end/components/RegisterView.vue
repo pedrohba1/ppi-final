@@ -1,4 +1,6 @@
 <!-- Please remove this file from your project -->
+
+//
 <template>
   <div class="justify-center h-full">
     <form
@@ -45,13 +47,13 @@
           type="button"
           @click="onSubmit"
         >
-          Sign In
+          Sign up
         </button>
         <a
           class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
-          href="#"
+          href="/login"
         >
-          Forgot Password?
+          Sign in
         </a>
       </div>
     </form>
@@ -62,22 +64,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'NuxtLogin',
-  data() {
-    return {
-      email: null,
-      password: null,
-    }
-  },
-  methods: {
-    onSubmit() {
-      const data = {
-        password: this.password,
-        email: this.email,
-      }
-
-      console.log(data)
-    },
-  },
+  name: 'NuxtRegister',
 })
 </script>
