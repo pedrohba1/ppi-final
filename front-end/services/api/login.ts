@@ -7,5 +7,5 @@ type ILogin = {
 
 export const login = async function ({ username, password }: ILogin) {
   const response = await axios.post('/login', { username, password })
-  return response.data.message
+  return response.data;
 }
