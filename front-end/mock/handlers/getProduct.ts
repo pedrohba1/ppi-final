@@ -6,10 +6,11 @@ export const getProduct = rest.get('/product', (req, res, ctx) => {
   return res(
     ctx.json({
       id: productId,
-      name: 'produto',
-      description: "descrição",
-      price: "100.00",
-      amount: 5
+      name: 'carro de rolimã',
+      description: 'descrição',
+      price: '100.00',
+      vendor: 'Bufulin',
+      amount: 5,
     })
   )
 })

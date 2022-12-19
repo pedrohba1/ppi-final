@@ -4,10 +4,8 @@
  -->
 
 <template>
-  <div class="container flex  flex-col h-screen ">
-    <h1>
-      Products view
-    </h1>
+  <div class="container flex flex-col h-screen">
+    <h1>Products view</h1>
   </div>
 </template>
 

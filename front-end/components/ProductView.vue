@@ -8,16 +8,16 @@
   >
     <div class="flex flex-row">
       <div class="">
-        <h1>#NOMEPRODUTO#</h1>
+        <h1>{{ product.name }}</h1>
         <img src="http://placekitten.com/200/300" class="" />
       </div>
       <div
         class="flex flex-col text-left items-center justify-center pl-1 pt-1"
       >
-        <h2>#Preço#</h2>
-        <p>#Nome Vendedor#</p>
-        <p>#Descrição do produto#</p>
-        <p>#quantidade disponível#</p>
+        <h2>{{ product.price }}</h2>
+        <p>{{ product.vendor }}</p>
+        <p>{{ product.description }}</p>
+        <p>{{ product.amount }}</p>
       </div>
     </div>
   </div>
@@ -25,17 +25,23 @@
 
 <script>
 import Vue from 'vue'
+import { getProduct } from '../services/api/axios/getProduct'
 
 export default Vue.extend({
   name: 'NuxtProduct',
-  props: ['baseUrl', 'products'],
   data() {
     return {
-      product: {},
+      product: {
+        id: '',
+        name: '',
+        description: '',
+        price: '',
+        amount: undefined,
+      },
     }
   },
-  mounted() {
-    this.id = this.$route.params.id
+  async mounted() {
+    this.product = await getProduct({ id: this.$route.params.id })
   },
 })
 </script>
