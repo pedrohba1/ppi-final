@@ -60,7 +60,7 @@
 
 <script>
 import Vue from 'vue'
-import { login } from '../services/api/login'
+import { login } from '../services/api/axios/login'
 
 export default Vue.extend({
   name: 'NuxtLogin',
