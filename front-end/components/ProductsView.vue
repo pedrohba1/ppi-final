@@ -4,10 +4,15 @@
  -->
 
 <template>
-  <div class="container flex  flex-col h-screen ">
+  <div class="text-center">
     <h1>
       Products view
     </h1>
+    <div v-for="product of products">
+      <img src="http://placekitten.com/200/300" />
+      <img src="http://placekitten.com/200/300" />
+      <img src="http://placekitten.com/200/300" />
+    </div>
   </div>
 </template>
 
