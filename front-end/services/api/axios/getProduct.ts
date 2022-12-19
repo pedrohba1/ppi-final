@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-
 type IGetProduct = {
-    id: string;
+  id: string
 }
 
-export const getProduct = async function ({id}: IGetProduct) {
-  const response = await axios.post('/product', {}, {params: {id}})
-  return response.data.message
+export const getProduct = async function ({ id }: IGetProduct) {
+  const response = await axios.get('/product', { params: { id } })
+  return response.data
 }
