@@ -26,7 +26,7 @@
         </fieldset>
 
         <fieldset class="form-group">
-          <div class="mb-6">
+          <div class="mb-4">
             <label
               class="block text-grey-darker text-sm font-bold mb-2"
               for="password"
@@ -43,7 +43,7 @@
         </fieldset>
 
         <fieldset class="form-group">
-          <div class="mb-6">
+          <div class="mb-4">
             <label
               class="block text-grey-darker text-sm font-bold mb-2"
               for="password"

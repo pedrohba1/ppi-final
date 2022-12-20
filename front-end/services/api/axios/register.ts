@@ -11,7 +11,7 @@ export const register = async function ({
   password,
   repeatPassword,
 }: IRegister) {
-  const response = await axios.post('/login', {
+  const response = await axios.post('/register', {
     username,
     password,
     repeatPassword,
