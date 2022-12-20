@@ -1,11 +1,6 @@
-<!-- Please remove this file from your project -->
-<!-- 
-    TODO: façam um compoente para listar produtos, 3 por linha
- -->
-
 <template>
 
-  <div class="bg-white">
+  <div class="bg-white pt-4">
     <div
     class="grid grid-cols-3 gap-4"
     >
