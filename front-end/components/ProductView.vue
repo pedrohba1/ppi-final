@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="container flex justify-center items-center flex-col h-screen place-items-center"
+    class="container flex justify-center items-center flex-col h-screen place-items-center bg-white"
   >
     <div class="flex flex-row">
       <div class="">

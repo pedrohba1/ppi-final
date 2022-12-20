@@ -4,8 +4,8 @@
  -->
 
 <template>
-  <div class="">
-    <h1>Products view</h1>
+
+  <div class="bg-white">
     <div
     class="grid grid-cols-3 gap-4"
     >
@@ -13,11 +13,11 @@
       v-for="product in products"
       :key="product.id"
        >
-        <img src="http://placekitten.com/200/300" />
-        <p>
-          {{ product.name }}
+        <NuxtLink to="/product"><img src="http://placekitten.com/200/300" class="pl-4"/></NuxtLink>
+        <p class="pl-4">
+          <NuxtLink to="/product">{{ product.name }}</NuxtLink>
         </p>
-        <p>
+        <p class="pl-4">
           {{ product.description }}
         </p>
       </div>
@@ -30,6 +30,9 @@ import Vue from 'vue'
 import { getProducts } from '../services/api/axios/getProducts'
 
 export default Vue.extend({
+
+  layout:'default',
+
   name: 'NuxtProducts',
 
   data() {
