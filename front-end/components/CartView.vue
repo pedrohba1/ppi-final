@@ -21,9 +21,9 @@ import Vue from 'vue'
 import { getProducts } from '../services/api/axios/getProducts'
 
 export default Vue.extend({
-  layout: 'default',
 
   name: 'NuxtProducts',
+  layout: 'default',
 
   data() {
     return {
