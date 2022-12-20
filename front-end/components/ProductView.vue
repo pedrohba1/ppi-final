@@ -3,9 +3,7 @@
 <!-- TODO: façam um compoente para listar um produto só -->
 
 <template>
-  <div
-    class="container flex justify-center items-center flex-col h-screen place-items-center bg-white"
-  >
+  <div class="container flex justify-center items-center flex-col h-screen place-items-center bg-white">
     <div class="flex flex-row">
       <div class="">
         <h1>{{ product.name }}</h1>
