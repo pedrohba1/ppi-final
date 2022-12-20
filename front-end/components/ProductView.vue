@@ -8,7 +8,7 @@
   >
     <div class="flex flex-row">
       <div class="">
-        <h1>{{ product.name }}</h1>
+        <h1>#ID: {{ product.id }} {{ product.name }}</h1>
         <img src="http://placekitten.com/200/300" class="" />
       </div>
       <div
