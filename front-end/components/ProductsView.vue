@@ -1,9 +1,12 @@
 <template>
   <div class="bg-slate-200 pt-4">
-    <div class="grid grid-cols-3 gap-4">
-      <div v-for="product in products" :key="product.id" class="w-60 pt-3 bg-slate-50 hover:bg-slate-300
-      hover:drop-shadow-2xl">
-        <NuxtLink :to="{ path: `/product/${product.id}` }"
+    <div class="grid grid-cols-3 gap-4 m-6">
+      <div
+        v-for="product in products"
+        :key="product.id"
+        class="w-60 pt-3 bg-slate-50 hover:bg-slate-300 hover:drop-shadow-2xl"
+      >
+        <NuxtLink :to="{ path: `/product/${product.id}` }" class="ml-5"
           ><img src="http://placekitten.com/200/300" class="pl-5" />
           <p class="pl-5"></p>
           <p class="pl-5">
