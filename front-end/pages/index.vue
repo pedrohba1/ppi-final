@@ -14,6 +14,15 @@
       O carrinho ainda não se encontra em um estado funcional visto que ele precisa de 
       integração com o backend, entretato assim que o backend estiver funcionando poderemos 
       fazer a funcionalidade. Atualmente ele funciona com um mock
+      <br>
+      Alunos: <br>
+      Davi de Pontes Pasquini 12011BCC036
+      João Vitor Afonso Pereira 11911BCC037
+      Pedro Henrique Bufulin de Almeida 11711BCC028
+      Lorenzo Machado Burgos 12011BCC005
+
+
+
     </p>
   </div>
 </template>
