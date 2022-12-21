@@ -4,13 +4,14 @@
     <br />
     <h2 class="pl-4">produtos:</h2>
     <div class="col grid col-span-1">
-      <div v-for="product in cart" :key="product.id">
+      <div v-for="product in products" :key="product.id">
         <NuxtLink to="/product"
           ><img src="http://placekitten.com/200/300" class="pl-4"
-        /></NuxtLink>
+        />
         <p class="pl-4">
-          <NuxtLink to="/product">{{ product.name }}</NuxtLink>
+          {{ product.name }}
         </p>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -18,11 +19,10 @@
 
 <script>
 import Vue from 'vue'
-import { getProducts } from '../services/api/axios/getProducts'
+import { getProductsInCart } from '../services/api/axios/getProductsInCart'
 
 export default Vue.extend({
-  name: 'NuxtProducts',
-  layout: 'default',
+  name: 'NuxtCart',
 
   data() {
     return {
@@ -38,7 +38,7 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    this.products = await getProducts()
+    this.products = await getProductsInCart()
   },
 })
 </script>
