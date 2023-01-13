@@ -17,22 +17,28 @@ public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_cart")
-    private UUID id_cart;
+    @Column(name = "idCart")
+    private UUID idCart;
+
+    @Column(nullable = false, name = "idUser")
+    private UUID idUser;
 
     @OneToOne()
     @JoinColumn(
-            name = "id_user",
-            referencedColumnName = "id_user",
+            name = "idUser",
+            referencedColumnName = "idUser",
             insertable = false,
             updatable = false
     )
     private User user;
 
+    @Column(nullable = false, name = "idUser")
+    private List<UUID> idProducts;
+
     @OneToMany()
     @JoinColumn(
-            name = "id_product",
-            referencedColumnName = "id_product",
+            name = "idProduct",
+            referencedColumnName = "idProduct",
             insertable = false,
             updatable = false
     )

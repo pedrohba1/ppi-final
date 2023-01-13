@@ -14,6 +14,5 @@ public class ProductCreationDataDTO {
     private String productDescription;
     private Double productPrice;
     private Integer productAmount;
-    private UUID id_user;
-
+    private UUID idUser;
 }
