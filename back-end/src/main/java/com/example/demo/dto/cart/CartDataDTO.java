@@ -16,11 +16,11 @@ import java.util.UUID;
 public class CartDataDTO {
     private UUID idCart;
     private UUID idUser;
-    private List<UUID> idProducts;
+    private List<UUID> idProduct;
 
     public CartDataDTO(Cart cart) {
         this.idUser = cart.getIdCart();
         this.idUser = cart.getIdUser();
-        this.idProducts = cart.getIdProducts();
+        this.idProduct = cart.getIdProduct();
     }
 }
