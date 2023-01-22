@@ -12,5 +12,5 @@ import java.util.UUID;
 @Builder
 public class CartCreationDataDTO {
     private UUID idUser;
-    private List<UUID> idProducts;
+    private List<UUID> idProduct;
 }

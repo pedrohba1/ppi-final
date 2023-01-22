@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,12 +17,12 @@ import java.util.UUID;
 public class CartPutDTO {
     private List<UUID> idProducts;
 
-    public Cart toCart(Cart cart) {
+    public Cart toCart(Optional<Cart> cart) {
         Cart putCart = new Cart();
-        putCart.setIdCart(cart.getIdCart());
-        putCart.setIdUser(cart.getIdUser());
+        putCart.setIdCart(cart.get().getIdCart());
+        putCart.setIdUser(cart.get().getIdUser());
 
-        putCart.setIdProducts(idProducts);
+        putCart.setIdProduct(idProducts);
 
         return putCart;
     }

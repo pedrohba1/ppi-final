@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
     @Query(
-            value = "SELECT distinct user FROM USER user" +
+            value = "SELECT distinct user FROM User user" +
                     "WHERE user.userName = :userName"
     )
     User findByUserName(@Param("userName") String userName);

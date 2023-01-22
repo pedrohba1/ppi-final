@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,10 +18,10 @@ public class ProductPutDTO {
     private Double productPrice;
     private Integer productAmount;
 
-    public Product toProduct(Product product) {
+    public Product toProduct(Optional<Product> product) {
         Product putProduct = new Product();
-        putProduct.setIdProduct(product.getIdProduct());
-        putProduct.setIdUser(product.getIdUser());
+        putProduct.setIdProduct(product.get().getIdProduct());
+        putProduct.setIdUser(product.get().getIdUser());
 
         putProduct.setProductName(productName);
         putProduct.setProductDescription(productDescription);

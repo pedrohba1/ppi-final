@@ -33,7 +33,7 @@ public class Cart {
     private User user;
 
     @Column(nullable = false, name = "idUser")
-    private List<UUID> idProducts;
+    private List<UUID> idProduct;
 
     @OneToMany()
     @JoinColumn(

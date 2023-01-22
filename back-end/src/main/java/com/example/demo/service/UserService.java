@@ -50,6 +50,7 @@ public class UserService {
         return listDTO;
     }
 
+
     public UserDataDTO putUser(UUID idUser, UserPutDTO putDTO) {
         Optional<User> user = userRepository.findById(idUser);
 
