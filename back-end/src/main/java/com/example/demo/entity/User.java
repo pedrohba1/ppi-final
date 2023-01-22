@@ -24,4 +24,9 @@ public class User {
 
     @Column(nullable = false, name = "password")
     private String password;
+
+    public User(String userName, String password) {
+        this.setUserName(userName);
+        this.setPassword(password);
+    }
 }

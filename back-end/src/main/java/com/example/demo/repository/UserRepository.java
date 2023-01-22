@@ -7,10 +7,13 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.UUID;
 
+import java.util.Optional;
+import java.util.UUID;
+
 public interface UserRepository extends JpaRepository<User, UUID> {
-    @Query(
-            value = "SELECT distinct user FROM User user" +
-                    "WHERE user.userName = :userName"
-    )
-    User findByUserName(@Param("userName") String userName);
+    Optional<User> findByUserName(@Param("userName") String userName);
+
+
+    Boolean existsByUserName(String username);
+
 }

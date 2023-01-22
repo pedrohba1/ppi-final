@@ -22,14 +22,13 @@ public class CartService {
     CartRepository cartRepository;
 
     public CartDataDTO createCart(CartCreationDataDTO register) {
-        Cart cart = cartRepository.findCartByIdUser(register.getIdUser());
+        Cart cart = cartRepository.findByIdUser(register.getIdUser());
         if(cart != null) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         Cart cartData = new Cart();
         cartData.setIdUser(register.getIdUser());
-        cartData.setIdProduct(register.getIdProduct());
         return new CartDataDTO(cartRepository.save(cartData));
     }
 

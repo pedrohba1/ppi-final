@@ -22,7 +22,6 @@ public class CartPutDTO {
         putCart.setIdCart(cart.get().getIdCart());
         putCart.setIdUser(cart.get().getIdUser());
 
-        putCart.setIdProduct(idProducts);
 
         return putCart;
     }

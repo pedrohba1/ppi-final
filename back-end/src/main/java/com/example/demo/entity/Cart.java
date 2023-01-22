@@ -32,13 +32,8 @@ public class Cart {
     )
     private User user;
 
-    @Column(nullable = false, name = "idUser")
-    private List<UUID> idProduct;
-
     @OneToMany()
     @JoinColumn(
-            name = "idProduct",
-            referencedColumnName = "idProduct",
             insertable = false,
             updatable = false
     )

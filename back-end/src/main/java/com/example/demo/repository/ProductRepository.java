@@ -8,9 +8,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.UUID;
 
 public interface ProductRepository extends JpaRepository<Product, UUID> {
-    @Query(
-            value = "SELECT distinct product FROM Product product" +
-                    "WHERE product.productName = : productName"
-    )
-    Product findProductByName(@Param("productName") String productName);
+    Product findByProductName(@Param("productName") String productName);
 }

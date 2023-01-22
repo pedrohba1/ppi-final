@@ -21,6 +21,5 @@ public class CartDataDTO {
     public CartDataDTO(Cart cart) {
         this.idUser = cart.getIdCart();
         this.idUser = cart.getIdUser();
-        this.idProduct = cart.getIdProduct();
     }
 }

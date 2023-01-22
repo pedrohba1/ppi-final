@@ -23,8 +23,8 @@ public class UserService {
     UserRepository userRepository;
 
     public UserDataDTO createUser(UserCreationDataDTO register) {
-        User user = userRepository.findByUserName(register.getUserName());
-        if(user != null) {
+         Optional<User> user = userRepository.findByUserName(register.getUserName());
+        if(user.isEmpty()) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
