@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -14,9 +16,9 @@ public class UserPutDTO {
     private String userName;
     private String password;
 
-    public User toUser(User user) {
+    public User toUser(Optional<User> user) {
         User putUser = new User();
-        putUser.setIdUser(user.getIdUser());
+        putUser.setIdUser(user.get().getIdUser());
 
         putUser.setUserName(userName);
         putUser.setPassword(password);
