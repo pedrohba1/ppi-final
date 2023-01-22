@@ -16,10 +16,10 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_product")
-    private UUID id_product;
+    @Column(name = "idProduct")
+    private UUID idProduct;
 
-    @Column(nullable = false, name = "priductName")
+    @Column(nullable = false, name = "productName")
     private String productName;
 
     @Column(nullable = false, name = "productDescription")
@@ -31,10 +31,13 @@ public class Product {
     @Column(nullable = false, name = "productAmount")
     private Integer productAmount;
 
+    @Column(nullable = false, name = "idUser")
+    private UUID idUser;
+
     @ManyToOne()
     @JoinColumn(
-            name = "id_user",
-            referencedColumnName = "id_user",
+            name = "idUser",
+            referencedColumnName = "idUser",
             insertable = false,
             updatable = false
     )
