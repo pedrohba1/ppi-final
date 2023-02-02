@@ -28,7 +28,7 @@ public class UserController {
 
 
     @GetMapping("")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<Object> find() {
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.findAll());
     }

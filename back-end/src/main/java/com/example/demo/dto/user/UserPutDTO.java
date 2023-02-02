@@ -20,7 +20,6 @@ public class UserPutDTO {
         User putUser = new User();
         putUser.setIdUser(user.get().getIdUser());
 
-        putUser.setUserName(userName);
         putUser.setPassword(password);
 
         return putUser;

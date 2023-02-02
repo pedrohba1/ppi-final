@@ -4,6 +4,7 @@ import com.example.demo.dto.user.UserCreationDataDTO;
 import com.example.demo.dto.user.UserDataDTO;
 import com.example.demo.dto.user.UserPutDTO;
 import com.example.demo.entity.User;
+import com.example.demo.models.Role;
 import com.example.demo.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jdk.jshell.spi.ExecutionControl;
@@ -12,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -23,14 +21,15 @@ public class UserService {
     UserRepository userRepository;
 
     public UserDataDTO createUser(UserCreationDataDTO register) {
-         Optional<User> user = userRepository.findByUserName(register.getUserName());
+         Optional<User> user = userRepository.findByUsername(register.getUserName());
         if(user.isEmpty()) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         User userData = new User();
-        userData.setUserName(register.getUserName());
+        userData.setUsername(register.getUserName());
         userData.setPassword(register.getPassword());
+        userData.setRoles(Collections.singleton(Role.ROLE_USER));
 
         return new UserDataDTO(userRepository.save(userData));
     }

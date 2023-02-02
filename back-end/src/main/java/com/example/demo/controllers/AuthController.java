@@ -30,8 +30,6 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
-
-
     @Autowired
     PasswordEncoder encoder;
 
@@ -57,7 +55,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser( @RequestBody SignupDTO signupDTO) {
-        if (userRepository.existsByUserName(signupDTO.getUserName())) {
+        if (userRepository.existsByUsername(signupDTO.getUserName())) {
             return ResponseEntity
                     .badRequest()
                     .body("Error: Username is already taken!");
@@ -66,7 +64,6 @@ public class AuthController {
         // Create new user's account
         User user = new User(signupDTO.getUserName(),
                 encoder.encode(signupDTO.getPassword()));
-
 
 
         userRepository.save(user);

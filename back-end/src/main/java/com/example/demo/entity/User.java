@@ -1,8 +1,11 @@
 package com.example.demo.entity;
 
+import com.example.demo.models.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -19,14 +22,24 @@ public class User {
     @Column(name = "idUser")
     private UUID idUser;
 
-    @Column(nullable = false, name = "userName")
-    private String userName;
+    @Column(nullable = false, name = "username")
+    private String username;
 
     @Column(nullable = false, name = "password")
     private String password;
 
-    public User(String userName, String password) {
-        this.setUserName(userName);
+
+    @Column(nullable = false, name = "roles")
+    private Set<Role> roles = new HashSet<>();
+
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+
+    public User(String username, String password) {
+        this.setUsername(username);
         this.setPassword(password);
     }
 }
