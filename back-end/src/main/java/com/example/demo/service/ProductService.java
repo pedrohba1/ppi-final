@@ -23,10 +23,6 @@ public class ProductService {
     ProductRepository productRepository;
 
     public Product createProduct(ProductCreationDataDTO register) {
-        Product product = productRepository.findByName(register.getName());
-        if(product != null) {
-            throw new HttpClientErrorException(HttpStatus.CONFLICT);
-        }
 
         Product productData = new Product();
         productData.setName(register.getName());
