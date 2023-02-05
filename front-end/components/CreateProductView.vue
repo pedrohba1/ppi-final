@@ -79,11 +79,8 @@
               type="button"
               @click="onSubmit"
             >
-              Sign In
+              Register
             </button>
-          </div>
-          <div>
-            <NuxtLink :to="{ path: `/register` }">Sign up </NuxtLink>
           </div>
         </form>
       </div>
@@ -92,7 +89,7 @@
   
   <script>
   import Vue from 'vue'
-  // import createProduct from 'services/api/axios/createProduct'
+import createProduct from 'services/api/axios/createProduct'
 
 
   export default Vue.extend({
@@ -107,12 +104,14 @@
     },
     methods: {
       async onSubmit() {
-        // const data = {
-        //   password: this.password,
-        //   email: this.email,
-        // }
+        const data = {
+          price: this.price,
+          name: this.name,
+          amount: this.amount,
+          description: this.description
+        }
   
-        // await login({ ...data })
+        await createProduct({ ...data })
 
       },
     },
