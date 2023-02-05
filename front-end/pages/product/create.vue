@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <h1> test</h1>
-  
-  </div>
+    <CreateProductView />
+
 </template>
 
 <script lang="ts">

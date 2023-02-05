@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
-  baseURL: 'your_api_base_url'
+  
 });
 
 instance.interceptors.request.use(

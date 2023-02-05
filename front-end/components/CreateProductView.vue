@@ -92,24 +92,28 @@
   
   <script>
   import Vue from 'vue'
-  import { login } from '../services/api/axios/login'
-  
+  // import createProduct from 'services/api/axios/createProduct'
+
+
   export default Vue.extend({
-    name: 'NuxtLogin',
+    name: 'NuxtCreateProduct',
     data() {
       return {
-        email: null,
-        password: null,
+        name: null,
+        description: null,
+        amount: null,
+        price: null
       }
     },
     methods: {
       async onSubmit() {
-        const data = {
-          password: this.password,
-          email: this.email,
-        }
+        // const data = {
+        //   password: this.password,
+        //   email: this.email,
+        // }
   
-        await login({ ...data })
+        // await login({ ...data })
+
       },
     },
   })
