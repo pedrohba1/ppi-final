@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.dto.product.ProductCreationDataDTO;
 import com.example.demo.dto.product.ProductDataDTO;
 import com.example.demo.dto.product.ProductPutDTO;
-import com.example.demo.dto.user.UserDataDTO;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.repository.ProductRepository;
@@ -23,44 +22,40 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public ProductDataDTO createProduct(ProductCreationDataDTO register) {
-        Product product = productRepository.findByName(register.getProductName());
+    public Product createProduct(ProductCreationDataDTO register) {
+        Product product = productRepository.findByName(register.getName());
         if(product != null) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         Product productData = new Product();
-        productData.setName(register.getProductName());
-        productData.setPrice(register.getProductPrice());
-        productData.setDescription(register.getProductDescription());
-        productData.setAmount(register.getProductAmount());
-        productData.setPrice(register.getProductPrice());
-        productData.setUser(new User(register.getUserId()));
+        productData.setName(register.getName());
+        productData.setPrice(register.getPrice());
+        productData.setDescription(register.getDescription());
+        productData.setAmount(register.getAmount());
+        productData.setPrice(register.getPrice());
+        productData.setSeller(new User(register.getUserId()));
 
-        return new ProductDataDTO(productRepository.save(productData));
+        return productRepository.save(productData);
     }
 
-    public ProductDataDTO getProductID(UUID idProduct) {
-        return new ProductDataDTO(productRepository.findById(idProduct).orElseThrow(EntityNotFoundException::new));
+    public Product getProductID(UUID idProduct) {
+        return productRepository.findById(idProduct).orElseThrow(EntityNotFoundException::new);
     }
 
-    public List<ProductDataDTO> getAllProduct() {
-        List<Product> productResponse = productRepository.findAll();
+    public List<Product> getAllProduct() {
+        List<Product> products = productRepository.findAll();
         List<ProductDataDTO> listDTO = new ArrayList<>();
-        for(Product product : productResponse) {
-            ProductDataDTO productDTO = new ProductDataDTO(product);
-            listDTO.add(productDTO);
-        }
-        return listDTO;
+        return products;
     }
 
-    public ProductDataDTO putProduct(UUID idProduct, ProductPutDTO putDTO) {
+    public Optional<Product> putProduct(UUID idProduct, ProductPutDTO putDTO) {
         Optional<Product> product = productRepository.findById(idProduct);
 
         if(product.isEmpty()) {
             throw new EntityNotFoundException();
         }
-        return new ProductDataDTO(productRepository.save(putDTO.toProduct(product)));
+        return product;
     }
 
     public void deleteProduct(UUID idProduct) {

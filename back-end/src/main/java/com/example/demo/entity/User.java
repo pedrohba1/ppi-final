@@ -30,6 +30,7 @@ public class User {
 
 
     public User(UUID userId) {
+        this.id = userId;
     }
 
 

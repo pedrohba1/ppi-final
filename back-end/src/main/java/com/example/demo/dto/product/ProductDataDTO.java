@@ -14,20 +14,12 @@ import java.util.UUID;
 @Data
 @Builder
 public class ProductDataDTO {
-    private UUID idProduct;
-    private String productName;
-    private String productDescription;
-    private Double productPrice;
-    private Integer productAmount;
+
+    private String name;
+    private String description;
+    private Double price;
+    private Integer amount;
     private User user;
 
-    public ProductDataDTO(Product product){
-        this.idProduct = product.getIdProduct();
-        this.productName = product.getName();
-        this.productDescription = product.getDescription();
-        this.productPrice = product.getPrice();
-        this.productAmount = product.getAmount();
-        this.user = product.getUser();
-    }
 
 }

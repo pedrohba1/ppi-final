@@ -1,6 +1,7 @@
-import axios from 'axios'
+import { instance } from "./instance"
+
 
 export const getProductsInCart = async function () {
-  const response = await axios.get('/cart')
+  const response = await instance.get('/cart')
   return response.data.products
 }
