@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping("")
-    @PreAuthorize("hasRole('ROLE_USER")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public UserDataDTO createUser(
             @RequestBody SignupDTO registerDTO
     ) {

@@ -1,10 +1,9 @@
-import axios from 'axios'
-
+import {instance} from "./instance"
 type IGetProduct = {
   id: string
 }
 
 export const getProduct = async function ({ id }: IGetProduct) {
-  const response = await axios.get('/product', { params: { id } })
+  const response = await instance.get('/product', { params: { id } })
   return response.data
 }
