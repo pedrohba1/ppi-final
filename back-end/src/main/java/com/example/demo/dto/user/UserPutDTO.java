@@ -18,7 +18,7 @@ public class UserPutDTO {
 
     public User toUser(Optional<User> user) {
         User putUser = new User();
-        putUser.setIdUser(user.get().getIdUser());
+        putUser.setId(user.get().getId());
 
         putUser.setPassword(password);
 

@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.models.Role;
+import com.example.demo.models.RoleDescription;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,8 +19,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idUser")
-    private UUID idUser;
+    @Column()
+    private UUID id;
 
     @Column(nullable = false, name = "username")
     private String username;
@@ -29,11 +29,18 @@ public class User {
     private String password;
 
 
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @Column(nullable = false, name = "roles")
-    private Set<Role> roles = new HashSet<>();
+    @JoinTable(name="roles",
+        joinColumns = @JoinColumn(name ="user_id")
+
+    )
+    private Set<RoleDescription> roles = new HashSet<>();
 
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RoleDescription> roles) {
         this.roles = roles;
     }
 

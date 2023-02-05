@@ -4,10 +4,9 @@ import com.example.demo.dto.user.UserCreationDataDTO;
 import com.example.demo.dto.user.UserDataDTO;
 import com.example.demo.dto.user.UserPutDTO;
 import com.example.demo.entity.User;
-import com.example.demo.models.Role;
+import com.example.demo.models.RoleDescription;
 import com.example.demo.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import jdk.jshell.spi.ExecutionControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class UserService {
         User userData = new User();
         userData.setUsername(register.getUserName());
         userData.setPassword(register.getPassword());
-        userData.setRoles(Collections.singleton(Role.ROLE_USER));
+        userData.setRoles(Collections.singleton(RoleDescription.ROLE_USER));
 
         return new UserDataDTO(userRepository.save(userData));
     }
