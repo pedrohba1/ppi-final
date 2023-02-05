@@ -11,36 +11,28 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TB_PRODUCT")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idProduct")
+    @Column()
     private UUID idProduct;
 
-    @Column(nullable = false, name = "productName")
-    private String productName;
+    @Column(nullable = false)
+    private String name;
 
-    @Column(nullable = false, name = "productDescription")
-    private String productDescription;
+    @Column(nullable = false )
+    private String description;
 
-    @Column(nullable = false, name = "productPrice")
-    private Double productPrice;
+    @Column(nullable = false)
+    private Double price;
 
-    @Column(nullable = false, name = "productAmount")
-    private Integer productAmount;
+    @Column(nullable = false)
+    private Integer amount;
 
-    @Column(nullable = false, name = "idUser")
-    private UUID idUser;
 
-    @ManyToOne()
-    @JoinColumn(
-            name = "idUser",
-            referencedColumnName = "idUser",
-            insertable = false,
-            updatable = false
-    )
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn()
     private User user;
 
 }

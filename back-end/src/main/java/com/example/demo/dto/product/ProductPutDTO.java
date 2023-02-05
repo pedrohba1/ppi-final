@@ -21,12 +21,12 @@ public class ProductPutDTO {
     public Product toProduct(Optional<Product> product) {
         Product putProduct = new Product();
         putProduct.setIdProduct(product.get().getIdProduct());
-        putProduct.setIdUser(product.get().getIdUser());
+        putProduct.setUser(product.get().getUser());
 
-        putProduct.setProductName(productName);
-        putProduct.setProductDescription(productDescription);
-        putProduct.setProductPrice(productPrice);
-        putProduct.setProductAmount(productAmount);
+        putProduct.setName(productName);
+        putProduct.setDescription(productDescription);
+        putProduct.setPrice(productPrice);
+        putProduct.setAmount(productAmount);
 
         return putProduct;
     }

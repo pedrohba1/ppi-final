@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import com.example.demo.models.RoleDescription;
+import com.example.demo.models.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,12 +9,12 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Builder
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TB_USER")
+@Table(name = "app_users")
 public class User {
 
     @Id
@@ -22,25 +22,18 @@ public class User {
     @Column()
     private UUID id;
 
-    @Column(nullable = false, name = "username")
+    @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false, name = "password")
+    @Column(nullable = false)
     private String password;
 
 
+    public User(UUID userId) {
+    }
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @Column(nullable = false, name = "roles")
-    @JoinTable(name="roles",
-        joinColumns = @JoinColumn(name ="user_id")
-
-    )
-    private Set<RoleDescription> roles = new HashSet<>();
-
-
-    public void setRoles(Set<RoleDescription> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
@@ -49,4 +42,8 @@ public class User {
         this.setUsername(username);
         this.setPassword(password);
     }
+
+    @ManyToMany()
+    private Set<Role> roles;
+
 }

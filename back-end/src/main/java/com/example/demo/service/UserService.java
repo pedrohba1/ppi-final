@@ -1,14 +1,18 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.auth.SignupDTO;
 import com.example.demo.dto.user.UserCreationDataDTO;
 import com.example.demo.dto.user.UserDataDTO;
 import com.example.demo.dto.user.UserPutDTO;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
-import com.example.demo.models.RoleDescription;
+import com.example.demo.models.RoleEnum;
+import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -18,17 +22,28 @@ import java.util.*;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-    public UserDataDTO createUser(UserCreationDataDTO register) {
-         Optional<User> user = userRepository.findByUsername(register.getUserName());
-        if(user.isEmpty()) {
+
+    @Autowired
+    PasswordEncoder encoder;
+
+    public UserDataDTO createUser(SignupDTO signUpDto) {
+
+         Optional<User> user = userRepository.findByUsername(signUpDto.getUserName());
+        if(!user.isEmpty()) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         User userData = new User();
-        userData.setUsername(register.getUserName());
-        userData.setPassword(register.getPassword());
-        userData.setRoles(Collections.singleton(RoleDescription.ROLE_USER));
+        userData.setUsername(signUpDto.getUserName());
+        userData.setPassword(encoder.encode(signUpDto.getPassword()));
+
+        Role role = roleRepository.findByName(RoleEnum.ROLE_USER);
+        Set<Role> roleSet = new HashSet<>();
+        roleSet.add(role);
+        userData.setRoles(roleSet);
 
         return new UserDataDTO(userRepository.save(userData));
     }

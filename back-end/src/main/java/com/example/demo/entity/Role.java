@@ -1,25 +1,25 @@
 package com.example.demo.entity;
 
 
-import com.example.demo.models.RoleDescription;
+import com.example.demo.models.RoleEnum;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private RoleDescription name;
+    private RoleEnum name;
 
     public Role() {
 
     }
 
-    public Role(RoleDescription name) {
+    public Role(RoleEnum name) {
         this.name = name;
     }
 
@@ -31,11 +31,12 @@ public class Role {
         this.id = id;
     }
 
-    public RoleDescription getName() {
+    public RoleEnum getName() {
         return name;
     }
 
-    public void setName(RoleDescription name) {
+    public void setName(RoleEnum name) {
         this.name = name;
     }
+
 }

@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.UUID;
 
 public interface ProductRepository extends JpaRepository<Product, UUID> {
-    Product findByProductName(@Param("productName") String productName);
+    Product findByName(@Param("name") String name);
 }

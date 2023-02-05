@@ -1,6 +1,7 @@
 package com.example.demo.dto.product;
 
 import com.example.demo.entity.Product;
+import com.example.demo.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +19,15 @@ public class ProductDataDTO {
     private String productDescription;
     private Double productPrice;
     private Integer productAmount;
-    private UUID idUser;
+    private User user;
 
     public ProductDataDTO(Product product){
         this.idProduct = product.getIdProduct();
-        this.productName = product.getProductName();
-        this.productDescription = product.getProductDescription();
-        this.productPrice = product.getProductPrice();
-        this.productAmount = product.getProductAmount();
-        this.idUser = product.getIdUser();
+        this.productName = product.getName();
+        this.productDescription = product.getDescription();
+        this.productPrice = product.getPrice();
+        this.productAmount = product.getAmount();
+        this.user = product.getUser();
     }
 
 }

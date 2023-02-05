@@ -19,8 +19,8 @@ public class CartPutDTO {
 
     public Cart toCart(Optional<Cart> cart) {
         Cart putCart = new Cart();
-        putCart.setIdCart(cart.get().getIdCart());
-        putCart.setIdUser(cart.get().getIdUser());
+        putCart.setId(cart.get().getId());
+        putCart.setUser(cart.get().getUser());
 
 
         return putCart;

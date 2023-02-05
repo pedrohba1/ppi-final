@@ -24,18 +24,18 @@ public class ProductService {
     ProductRepository productRepository;
 
     public ProductDataDTO createProduct(ProductCreationDataDTO register) {
-        Product product = productRepository.findByProductName(register.getProductName());
+        Product product = productRepository.findByName(register.getProductName());
         if(product != null) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         Product productData = new Product();
-        productData.setProductName(register.getProductName());
-        productData.setProductPrice(register.getProductPrice());
-        productData.setProductDescription(register.getProductDescription());
-        productData.setProductAmount(register.getProductAmount());
-        productData.setProductPrice(register.getProductPrice());
-        productData.setIdUser(register.getIdUser());
+        productData.setName(register.getProductName());
+        productData.setPrice(register.getProductPrice());
+        productData.setDescription(register.getProductDescription());
+        productData.setAmount(register.getProductAmount());
+        productData.setPrice(register.getProductPrice());
+        productData.setUser(new User(register.getUserId()));
 
         return new ProductDataDTO(productRepository.save(productData));
     }

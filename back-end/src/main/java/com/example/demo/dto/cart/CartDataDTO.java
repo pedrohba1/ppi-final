@@ -19,7 +19,7 @@ public class CartDataDTO {
     private List<UUID> idProduct;
 
     public CartDataDTO(Cart cart) {
-        this.idUser = cart.getIdCart();
-        this.idUser = cart.getIdUser();
+        this.idUser = cart.getId();
+        this.idUser = cart.getUser().getId();
     }
 }

@@ -4,10 +4,14 @@ import com.example.demo.dto.auth.JwtDTO;
 import com.example.demo.dto.auth.MessageResponseDTO;
 import com.example.demo.dto.auth.SigninDTO;
 import com.example.demo.dto.auth.SignupDTO;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
+import com.example.demo.models.RoleEnum;
+import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.services.UserDetailsImpl;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,10 +36,13 @@ public class AuthController {
     UserRepository userRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    UserService userService;
+
 
     @Autowired
     JwtUtils jwtUtils;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser( @RequestBody SigninDTO siginDTO) {
@@ -55,18 +63,8 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser( @RequestBody SignupDTO signupDTO) {
-        if (userRepository.existsByUsername(signupDTO.getUserName())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body("Error: Username is already taken!");
-        }
 
-        // Create new user's account
-        User user = new User(signupDTO.getUserName(),
-                encoder.encode(signupDTO.getPassword()));
-
-
-        userRepository.save(user);
+        userService.createUser(signupDTO);
 
         return ResponseEntity.ok(new MessageResponseDTO("User registered successfully!"));
     }

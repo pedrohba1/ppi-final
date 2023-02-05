@@ -4,6 +4,7 @@ import com.example.demo.dto.cart.CartCreationDataDTO;
 import com.example.demo.dto.cart.CartDataDTO;
 import com.example.demo.dto.cart.CartPutDTO;
 import com.example.demo.entity.Cart;
+import com.example.demo.entity.User;
 import com.example.demo.repository.CartRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class CartService {
     CartRepository cartRepository;
 
     public CartDataDTO createCart(CartCreationDataDTO register) {
-        Cart cart = cartRepository.findByIdUser(register.getIdUser());
+        Cart cart = cartRepository.findByUserId(register.getIdUser());
         if(cart != null) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         Cart cartData = new Cart();
-        cartData.setIdUser(register.getIdUser());
+        cartData.setUser(new User(register.getIdUser()));
         return new CartDataDTO(cartRepository.save(cartData));
     }
 

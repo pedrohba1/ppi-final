@@ -12,30 +12,20 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TB_CART")
 public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idCart")
-    private UUID idCart;
+    @Column()
+    private UUID id;
 
-    @Column(nullable = false, name = "idUser")
-    private UUID idUser;
 
     @OneToOne()
-    @JoinColumn(
-            name = "idUser",
-            referencedColumnName = "idUser",
-            insertable = false,
-            updatable = false
-    )
+    @JoinColumn()
     private User user;
 
     @OneToMany()
     @JoinColumn(
-            insertable = false,
-            updatable = false
     )
     private List<Product> products;
 }
