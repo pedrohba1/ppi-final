@@ -10,9 +10,9 @@ import java.util.UUID;
 @Setter
 @Builder
 public class ProductCreationDataDTO {
-    private String productName;
-    private String productDescription;
-    private Double productPrice;
-    private Integer productAmount;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer amount;
     private UUID userId;
 }

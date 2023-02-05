@@ -39,13 +39,6 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.findAll());
     }
 
-    @PostMapping("")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public UserDataDTO createUser(
-            @RequestBody SignupDTO registerDTO
-    ) {
-        return userService.createUser(registerDTO);
-    }
 
     @GetMapping("/id/{userId}")
     public UserDataDTO searchUserById(@PathVariable UUID userId) {

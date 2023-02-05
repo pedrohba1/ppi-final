@@ -21,7 +21,7 @@ public class ProductPutDTO {
     public Product toProduct(Optional<Product> product) {
         Product putProduct = new Product();
         putProduct.setIdProduct(product.get().getIdProduct());
-        putProduct.setUser(product.get().getUser());
+        putProduct.setSeller(product.get().getSeller());
 
         putProduct.setName(productName);
         putProduct.setDescription(productDescription);

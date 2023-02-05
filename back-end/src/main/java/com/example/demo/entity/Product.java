@@ -32,7 +32,7 @@ public class Product {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn()
-    private User user;
+    @JoinColumn(nullable = false)
+    private User seller;
 
 }
