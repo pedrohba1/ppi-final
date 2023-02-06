@@ -67,8 +67,10 @@ public class ProductController {
 
 
     @PutMapping("/edit/{productId}")
-    public Optional<Product> putProduct(@PathVariable UUID productId, @RequestBody ProductPutDTO putDTO) {
-        return this.productService.putProduct(productId, putDTO);
+    public Optional<Product> putProduct(@PathVariable UUID productId,
+                                        @AuthenticationPrincipal UserDetailsImpl userDetails,
+                                        @RequestBody ProductPutDTO putDTO) {
+        return this.productService.putProduct(productId, userDetails.getId() , putDTO);
     }
 
     @DeleteMapping("/delete/{productId}")

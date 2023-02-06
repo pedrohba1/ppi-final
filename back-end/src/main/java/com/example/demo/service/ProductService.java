@@ -45,9 +45,13 @@ public class ProductService {
         return products;
     }
 
-    public Optional<Product> putProduct(UUID idProduct, ProductPutDTO putDTO) {
+    public Optional<Product> putProduct(UUID idProduct, UUID idUser,  ProductPutDTO putDTO) {
         Optional<Product> product = productRepository.findById(idProduct);
 
+
+        if (!product.isPresent() || !product.get().getSeller().getId().equals(idUser)) {
+            throw new HttpClientErrorException(HttpStatus.FORBIDDEN,"The product does not belong to the user");
+        }
 
         if(product.isEmpty()) {
             throw new EntityNotFoundException();
@@ -57,6 +61,7 @@ public class ProductService {
         updatedProduct.setName(putDTO.getName());
         updatedProduct.setDescription(putDTO.getDescription());
         updatedProduct.setPrice(putDTO.getPrice());
+        updatedProduct.setAmount(putDTO.getAmount());
         updatedProduct.setImage(putDTO.getImage());
 
 
