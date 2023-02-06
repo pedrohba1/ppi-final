@@ -16,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column()
-    private UUID idProduct;
+    private UUID id;
 
     @Column(nullable = false)
     private String name;

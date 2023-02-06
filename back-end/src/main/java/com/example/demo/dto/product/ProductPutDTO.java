@@ -22,7 +22,7 @@ public class ProductPutDTO {
 
     public Product toProduct(Optional<Product> product) {
         Product putProduct = new Product();
-        putProduct.setIdProduct(product.get().getIdProduct());
+        putProduct.setId(product.get().getId());
         putProduct.setSeller(product.get().getSeller());
 
         putProduct.setName(name);

@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.example.demo.models.RoleEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,6 +27,7 @@ public class User {
     private String username;
 
     @Column(nullable = false)
+    @JsonIgnore()
     private String password;
 
 
