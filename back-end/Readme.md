@@ -5,10 +5,23 @@ no docker.
 
 ## Getting Started
 
-Instancie o container com `docker-compose up -d`
+Inicialzie o banco de dados no container com `docker-compose up -d`
 
+
+
+## Rotas e funções
+
+A ideia dessa aplicação é ser uma implementação bem simples de um mercado livre.
+
+Podemos criar um usuário capaz de cadastrar múltiplos produtos para venda. 
+
+Produtos podem ser adicionados ao carrinho, com persistência no banco de dados remoto para conseguir completar a compra em dispositivos diferentes.
+
+As rotas da API estão documentadas com swagger.
 
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
+
+

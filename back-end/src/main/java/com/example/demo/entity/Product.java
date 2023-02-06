@@ -38,4 +38,7 @@ public class Product {
     @JoinColumn(nullable = false)
     private User seller;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = true)
+    private User buyer;
 }
