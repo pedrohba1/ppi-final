@@ -7,6 +7,6 @@ type IPostProduct = {
 }
 
 export const createProduct = async function (data: IPostProduct) {
-  const response = await instance.post('/product', data)
+  const response = await instance.post('/products/create', data)
   return response.data
 }

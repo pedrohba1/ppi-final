@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-export const getProducts = rest.get('/products', (_, res, ctx) => {
+export const getProducts = rest.get('/products/list', (_, res, ctx) => {
   const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => ({
     id: item,
     name: 'carro de rolimã',

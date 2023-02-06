@@ -17,7 +17,12 @@ Podemos criar um usuário capaz de cadastrar múltiplos produtos para venda.
 
 Produtos podem ser adicionados ao carrinho, com persistência no banco de dados remoto para conseguir completar a compra em dispositivos diferentes.
 
-As rotas da API estão documentadas com swagger.
+As rotas da API estão documentadas à seguir:
+
+
+### /products
+
+
 
 
 ## License

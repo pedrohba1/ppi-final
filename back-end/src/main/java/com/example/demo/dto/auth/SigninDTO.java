@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class SigninDTO {
-    private String userName;
+    private String username;
     private String password;
 }
 

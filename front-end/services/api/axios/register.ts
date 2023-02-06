@@ -11,10 +11,12 @@ export const register = async function ({
   password,
   repeatPassword,
 }: IRegister) {
-  const response = await instance.post('/register', {
+
+  // check if password and repeat password mismatches 
+
+  const response = await instance.post('/auth/signup', {
     username,
     password,
-    repeatPassword,
   })
   return response.data
 }

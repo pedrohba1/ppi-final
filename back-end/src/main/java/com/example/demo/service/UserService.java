@@ -33,18 +33,18 @@ public class UserService {
     public UserDataDTO createUser(SignupDTO signUpDto) {
 
 
-        Boolean validEmail = EmailValidator.validate(signUpDto.getUserName());
+        Boolean validEmail = EmailValidator.validate(signUpDto.getUsername());
         if(!validEmail){
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "invalid email format");
         }
 
-         Optional<User> user = userRepository.findByUsername(signUpDto.getUserName());
+         Optional<User> user = userRepository.findByUsername(signUpDto.getUsername());
         if(!user.isEmpty()) {
             throw new HttpClientErrorException(HttpStatus.CONFLICT);
         }
 
         User userData = new User();
-        userData.setUsername(signUpDto.getUserName());
+        userData.setUsername(signUpDto.getUsername());
         userData.setPassword(encoder.encode(signUpDto.getPassword()));
 
         Role role = roleRepository.findByName(RoleEnum.ROLE_USER);

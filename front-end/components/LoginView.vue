@@ -73,7 +73,7 @@ export default Vue.extend({
     async onSubmit() {
       const data = {
         password: this.password,
-        email: this.email,
+        username: this.email,
       }
 
       await login({ ...data })

@@ -44,7 +44,7 @@ public class AuthController {
     public ResponseEntity<?> authenticateUser( @RequestBody SigninDTO siginDTO) {
 
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(siginDTO.getUserName(), siginDTO.getPassword()));
+                new UsernamePasswordAuthenticationToken(siginDTO.getUsername(), siginDTO.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = jwtUtils.generateJwtToken(authentication);
