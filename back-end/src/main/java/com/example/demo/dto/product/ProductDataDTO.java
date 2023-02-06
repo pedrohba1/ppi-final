@@ -21,5 +21,7 @@ public class ProductDataDTO {
     private Integer amount;
     private User user;
 
+    private String image;
+
 
 }

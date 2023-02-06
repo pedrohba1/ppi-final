@@ -9,6 +9,7 @@ import com.example.demo.entity.User;
 import com.example.demo.models.RoleEnum;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.utils.EmailValidator;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,12 @@ public class UserService {
     PasswordEncoder encoder;
 
     public UserDataDTO createUser(SignupDTO signUpDto) {
+
+
+        Boolean validEmail = EmailValidator.validate(signUpDto.getUserName());
+        if(!validEmail){
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "invalid email format");
+        }
 
          Optional<User> user = userRepository.findByUsername(signUpDto.getUserName());
         if(!user.isEmpty()) {

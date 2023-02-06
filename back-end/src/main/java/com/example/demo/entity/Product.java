@@ -31,7 +31,10 @@ public class Product {
     private Integer amount;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private String image;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private User seller;
 

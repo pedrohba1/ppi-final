@@ -13,7 +13,6 @@ import java.util.Optional;
 @Data
 @Builder
 public class UserPutDTO {
-    private String userName;
     private String password;
 
     public User toUser(Optional<User> user) {

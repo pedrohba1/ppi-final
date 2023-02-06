@@ -30,6 +30,7 @@ public class ProductService {
         productData.setDescription(register.getDescription());
         productData.setAmount(register.getAmount());
         productData.setPrice(register.getPrice());
+        productData.setImage(register.getImage());
         productData.setSeller(new User(register.getUserId()));
 
         return productRepository.save(productData);
@@ -41,16 +42,24 @@ public class ProductService {
 
     public List<Product> getAllProduct() {
         List<Product> products = productRepository.findAll();
-        List<ProductDataDTO> listDTO = new ArrayList<>();
         return products;
     }
 
     public Optional<Product> putProduct(UUID idProduct, ProductPutDTO putDTO) {
         Optional<Product> product = productRepository.findById(idProduct);
 
+
         if(product.isEmpty()) {
             throw new EntityNotFoundException();
         }
+
+        Product updatedProduct = product.get();
+        updatedProduct.setName(putDTO.getName());
+        updatedProduct.setDescription(putDTO.getDescription());
+        updatedProduct.setPrice(putDTO.getPrice());
+        updatedProduct.setImage(putDTO.getImage());
+
+
         return product;
     }
 

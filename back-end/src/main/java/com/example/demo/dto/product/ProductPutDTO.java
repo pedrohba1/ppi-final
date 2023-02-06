@@ -13,20 +13,22 @@ import java.util.Optional;
 @Data
 @Builder
 public class ProductPutDTO {
-    private String productName;
-    private String productDescription;
-    private Double productPrice;
-    private Integer productAmount;
+    private String name;
+    private String description;
+    private Double price;
+    private Integer amount;
+
+    private String image;
 
     public Product toProduct(Optional<Product> product) {
         Product putProduct = new Product();
         putProduct.setIdProduct(product.get().getIdProduct());
         putProduct.setSeller(product.get().getSeller());
 
-        putProduct.setName(productName);
-        putProduct.setDescription(productDescription);
-        putProduct.setPrice(productPrice);
-        putProduct.setAmount(productAmount);
+        putProduct.setName(name);
+        putProduct.setDescription(description);
+        putProduct.setPrice(price);
+        putProduct.setAmount(amount);
 
         return putProduct;
     }

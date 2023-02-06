@@ -5,6 +5,7 @@ import com.example.demo.dto.auth.JwtDTO;
 import com.example.demo.dto.auth.MessageResponseDTO;
 import com.example.demo.dto.product.ProductCreationDataDTO;
 import com.example.demo.dto.product.ProductDataDTO;
+import com.example.demo.dto.product.ProductPutDTO;
 import com.example.demo.entity.Product;
 import com.example.demo.security.services.UserDetailsImpl;
 import com.example.demo.service.ProductService;
@@ -16,6 +17,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -42,6 +45,7 @@ public class ProductController {
         productCreationDataDto.setAmount(productData.getAmount());
         productCreationDataDto.setPrice(productData.getPrice());
         productCreationDataDto.setUserId(userDetails.getId());
+        productCreationDataDto.setImage(productData.getImage());
 
         Product product = this.productService.createProduct(productCreationDataDto);
 
@@ -49,13 +53,31 @@ public class ProductController {
     }
 
 
-
-    @GetMapping()
-    public ResponseEntity<Object> findProducts(
-    ) {
-        return (ResponseEntity<Object>) ResponseEntity.ok();
+    @GetMapping("/list")
+    public ResponseEntity<List<Product>> searchAllProducts() {
+        List<Product> products = this.productService.getAllProduct();
+        return ResponseEntity.ok(products);
     }
 
+    @GetMapping("/{productId}")
+    public Product searchProductById(@PathVariable UUID productId) {
+        return productService.getProductID(productId);
+    }
+
+
+
+    @PutMapping("/edit/{productId}")
+    public Optional<Product> putProduct(@PathVariable UUID productId, @RequestBody ProductPutDTO putDTO) {
+        return this.productService.putProduct(productId, putDTO);
+    }
+
+    @DeleteMapping("/delete/{productId}")
+    public  ResponseEntity<?> deleteProduct(@PathVariable UUID productId) {
+         this.productService.deleteProduct(productId);
+
+        return ResponseEntity.ok(new MessageResponseDTO("Product deleted"));
+
+    }
 
 
 }

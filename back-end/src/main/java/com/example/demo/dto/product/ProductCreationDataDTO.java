@@ -12,6 +12,7 @@ import java.util.UUID;
 public class ProductCreationDataDTO {
     private String name;
     private String description;
+    private  String image;
     private Double price;
     private Integer amount;
     private UUID userId;
