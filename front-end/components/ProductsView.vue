@@ -7,7 +7,7 @@
         class="w-60 pt-3 bg-slate-50 hover:bg-slate-300 hover:drop-shadow-2xl"
       >
         <NuxtLink :to="{ path: `/product/${product.id}` }" class="ml-5"
-          ><img src="http://placekitten.com/200/300" class="pl-5" />
+          ><img :src="product.image" class="pl-5" />
           <p class="pl-5"></p>
           <p class="pl-5">
             {{ product.name }}

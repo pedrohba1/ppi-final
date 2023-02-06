@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-export const getProduct = rest.get('/product', (req, res, ctx) => {
+export const getProducts = rest.get('/products/', (req, res, ctx) => {
   const productId = req.url.searchParams.get('id')
 
   return res(
