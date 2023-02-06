@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { instance } from "./instance";
 
 type ILogin = {
   username: string
@@ -10,7 +10,7 @@ type LoginRes = {
 }
 
 export const login = async function ({ username, password }: ILogin) {
-  const response = await axios.post<LoginRes>('/login', { username, password })
+  const response = await instance.post<LoginRes>('/login', { username, password })
   localStorage.setItem("token", response.data.token)
   return response.data
 }

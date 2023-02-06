@@ -1,5 +1,5 @@
 // NEW
-if (process.env.NODE_ENV === 'development') {
+if (process.env.ENABLE_MOCK === "enabled") {
   const { worker } = require('../mock/browser')
   worker.start()
 }

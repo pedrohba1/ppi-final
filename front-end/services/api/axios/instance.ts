@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
+
+
 const instance = axios.create({
-  
+  baseURL: process.env.ENABLE_MOCK ==="enabled" ? `http://localhost:${process.env.PORT}`: process.env.BASE_URL
 });
 
 instance.interceptors.request.use(

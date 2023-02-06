@@ -21,6 +21,41 @@
               />
             </div>
           </fieldset>
+
+          <fieldset class="form-group">
+            <div class="mb-4">
+              <label
+                class="block text-grey-darker text-sm font-bold mb-2"
+                for="description"
+              >
+                description
+              </label>
+              <input
+                v-model="description"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="Insert your description here"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <div class="mb-4">
+              <label
+                class="block text-grey-darker text-sm font-bold mb-2"
+                for="description"
+              >
+                image
+              </label>
+              <input
+                v-model="image"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="Insert your description here"
+              />
+            </div>
+          </fieldset>
+
           
           <fieldset class="form-group">
             <div class="mb-4">
@@ -39,22 +74,6 @@
             </div>
           </fieldset>
 
-          <fieldset class="form-group">
-            <div class="mb-4">
-              <label
-                class="block text-grey-darker text-sm font-bold mb-2"
-                for="description"
-              >
-                description
-              </label>
-              <input
-                v-model="description"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                type="text"
-                placeholder="Insert your description here"
-              />
-            </div>
-          </fieldset>
 
           <fieldset class="form-group">
             <div class="mb-4">
@@ -89,13 +108,14 @@
   
   <script>
   import Vue from 'vue'
-import createProduct from 'services/api/axios/createProduct'
+import {createProduct } from '../services/api/axios/createProduct'
 
 
   export default Vue.extend({
     name: 'NuxtCreateProduct',
     data() {
       return {
+        image:null,
         name: null,
         description: null,
         amount: null,
@@ -105,6 +125,7 @@ import createProduct from 'services/api/axios/createProduct'
     methods: {
       async onSubmit() {
         const data = {
+          image: this.image,
           price: this.price,
           name: this.name,
           amount: this.amount,

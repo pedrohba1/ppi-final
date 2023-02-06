@@ -5,6 +5,15 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  // environment variables
+  env: {
+    BASE_URL: process.env.BASE_URL,
+    ENABLE_MOCK: process.env.ENABLE_MOCK,
+    PORT: process.env.PORT
+  },
+
+
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'front-end',
@@ -37,18 +46,18 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxt/postcss8',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BASE_URL
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

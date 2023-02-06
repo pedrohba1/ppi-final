@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { instance } from "./instance"
 
 type IRegister = {
   username: string
@@ -11,7 +11,7 @@ export const register = async function ({
   password,
   repeatPassword,
 }: IRegister) {
-  const response = await axios.post('/register', {
+  const response = await instance.post('/register', {
     username,
     password,
     repeatPassword,
