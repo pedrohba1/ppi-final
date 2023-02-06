@@ -19,7 +19,6 @@ Produtos podem ser adicionados ao carrinho, com persistência no banco de dados 
 
 As rotas da API estão documentadas à seguir:
 
-
 ### /products
 
 

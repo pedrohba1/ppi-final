@@ -4,6 +4,7 @@ import com.example.demo.dto.cart.CartCreationDataDTO;
 import com.example.demo.dto.cart.CartDataDTO;
 import com.example.demo.dto.cart.CartPutDTO;
 import com.example.demo.entity.Cart;
+import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.repository.CartRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,44 +23,36 @@ public class CartService {
     @Autowired
     CartRepository cartRepository;
 
-    public CartDataDTO createCart(CartCreationDataDTO register) {
-        Cart cart = cartRepository.findByUserId(register.getIdUser());
-        if(cart != null) {
-            throw new HttpClientErrorException(HttpStatus.CONFLICT);
+
+    public Cart getUserCart(UUID userId) {
+        Cart cart = cartRepository.findByUserId(userId);
+        return cart;
+    }
+
+
+    public Cart addToCart(UUID userId, List<Product> products) {
+        Cart cart = cartRepository.findByUserId(userId);
+        if (cart == null) {
+            cart = new Cart();
+            cart.setUser(new User(userId));
+            cart.setProducts(products);
         }
+        else  cart.getProducts().addAll(products);
 
-        Cart cartData = new Cart();
-        cartData.setUser(new User(register.getIdUser()));
-        return new CartDataDTO(cartRepository.save(cartData));
+
+        return cartRepository.save(cart);
     }
 
-    public CartDataDTO getCartID(UUID idCart) {
-        return new CartDataDTO(cartRepository.findById(idCart).orElseThrow(EntityNotFoundException::new));
-    }
+    public void removeFromCart(UUID userId, List<Product> products) {
 
-    public List<CartDataDTO> getAllCart() {
-        List<Cart> cartResponse = cartRepository.findAll();
-        List<CartDataDTO> listDTO = new ArrayList<>();
-        for(Cart cart : cartResponse) {
-            CartDataDTO cartDTO = new CartDataDTO(cart);
-            listDTO.add(cartDTO);
+        Cart cart = cartRepository.findByUserId(userId);
+        if (cart == null) {
+            throw new IllegalArgumentException("No cart found for user: " + userId);
         }
-        return listDTO;
+        cart.getProducts().removeAll(products);
+        cartRepository.save(cart);
+
+
     }
 
-    public CartDataDTO putCart(UUID idCart, CartPutDTO putDTO) {
-        Optional<Cart> cart = cartRepository.findById(idCart);
-        if(cart.isEmpty()) {
-            throw new EntityNotFoundException();
-        }
-        return new CartDataDTO(cartRepository.save(putDTO.toCart(cart)));
-    }
-
-    public void deleteCart(UUID idCart) {
-        Optional<Cart> cart = cartRepository.findById(idCart);
-        if(cart.isEmpty()) {
-            throw new EntityNotFoundException();
-        }
-        cartRepository.delete(cart.get());
-    }
 }
