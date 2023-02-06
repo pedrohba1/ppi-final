@@ -1,6 +1,5 @@
 <template>
-    <CreateProductView />
-
+  <CreateProductView />
 </template>
 
 <script lang="ts">

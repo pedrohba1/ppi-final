@@ -9,10 +9,8 @@ export default {
   env: {
     BASE_URL: process.env.BASE_URL,
     ENABLE_MOCK: process.env.ENABLE_MOCK,
-    PORT: process.env.PORT
+    PORT: process.env.PORT,
   },
-
-
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -33,7 +31,7 @@ export default {
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~plugins/msw.ts'],
+  plugins: ['~plugins/msw.ts', '~plugins/toast.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -50,14 +48,12 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxtjs/axios',
-  ],
+  modules: ['@nuxtjs/axios'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.BASE_URL
+    baseURL: process.env.BASE_URL,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

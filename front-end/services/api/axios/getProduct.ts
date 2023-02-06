@@ -1,6 +1,6 @@
-import {instance} from "./instance"
+import { instance } from './instance'
 
-import { Product } from "~/types/product"
+import { Product } from '~/types/product'
 type IGetProduct = {
   id: string
 }

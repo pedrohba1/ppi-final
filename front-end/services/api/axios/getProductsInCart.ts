@@ -1,5 +1,4 @@
-import { instance } from "./instance"
-
+import { instance } from './instance'
 
 export const getProductsInCart = async function () {
   const response = await instance.get('/cart')

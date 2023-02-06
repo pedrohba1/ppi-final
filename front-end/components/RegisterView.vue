@@ -96,7 +96,7 @@ export default Vue.extend({
     async onSubmit() {
       const data = {
         password: this.password,
-        email: this.email,
+        username: this.email,
         repeatPassword: this.repeatPassword,
       }
 
