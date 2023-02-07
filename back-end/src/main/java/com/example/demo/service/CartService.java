@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CartService {
@@ -30,20 +27,23 @@ public class CartService {
     }
 
 
-    public Cart addToCart(UUID userId, List<Product> products) {
+    public Cart addToCart(UUID userId, Set<Product> products) {
         Cart cart = cartRepository.findByUserId(userId);
-        if (cart == null) {
+        if(cart == null){
             cart = new Cart();
-            cart.setUser(new User(userId));
             cart.setProducts(products);
+            cart.setUser(new User(userId));
+            return cartRepository.save(cart);
         }
-        else  cart.getProducts().addAll(products);
+
+        cart.setUser(new User(userId));
+        cart.getProducts().addAll(products);
 
 
         return cartRepository.save(cart);
     }
 
-    public void removeFromCart(UUID userId, List<Product> products) {
+    public void removeFromCart(UUID userId, Set<Product> products) {
 
         Cart cart = cartRepository.findByUserId(userId);
         if (cart == null) {

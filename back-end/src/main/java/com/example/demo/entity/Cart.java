@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,5 +27,6 @@ public class Cart {
 
     @OneToMany()
     @JoinColumn()
-    private List<Product> products;
+    private Set<Product> products;
+
 }

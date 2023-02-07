@@ -12,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -38,11 +36,14 @@ public class CartController {
                           @AuthenticationPrincipal UserDetailsImpl userDetails
     ) {
 
-        List<Product> products = new ArrayList<>();
+
+        Set<Product> products = new HashSet<>();
         for (UUID productId : addToCartDTO.getProductIds()) {
-            Product product = new Product();
+            Product product = new Product(productId);
             products.add(product);
         }
+
+
         return this.cartService.addToCart(userDetails.getId(), products);
     }
 
@@ -52,10 +53,9 @@ public class CartController {
             @AuthenticationPrincipal UserDetailsImpl userDetails
     ) {
 
-
-        List<Product> products = new ArrayList<>();
+        Set<Product> products = new HashSet<>();
         for (UUID productId : removeFromCartDTO.getProductIds()) {
-            Product product = new Product();
+            Product product = new Product(productId);
             products.add(product);
         }
 

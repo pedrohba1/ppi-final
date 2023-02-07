@@ -41,4 +41,8 @@ public class Product {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = true)
     private User buyer;
+
+    public Product(UUID productId) {
+        this.id = productId;
+    }
 }
